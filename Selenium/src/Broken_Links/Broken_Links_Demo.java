@@ -1,5 +1,9 @@
 package Broken_Links;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -19,7 +23,7 @@ public class Broken_Links_Demo
 	public static long timeout = 10;
 	public static long pageload = 20;
 
-	public static void main(String[] args) throws InterruptedException 
+	public static void main(String[] args) throws InterruptedException, MalformedURLException, IOException 
 	{
 		System.setProperty("webdriver.chrome.driver", "G:\\chromedriver.exe");
 		// driver = new ChromeDriver();
@@ -56,14 +60,46 @@ public class Broken_Links_Demo
 		//adding on the Active links
 		for (int i=0; i<links.size();i++)
 		{
-			if(links.get(i).getAttribute("href") != null)
+			if(links.get(i).getAttribute("href") != null && !links.get(i).getAttribute("href").contains("javascript"))
 			{
 				activelinks.addAll(links);
 			}
 		}
 		System.out.println("active links are "+ activelinks.size());
 		
-		//checking that Whether it is correct link or not
+		//checking the Links is correct by HTTPS API
+		try
+		{
+		for (int j=0; j<activelinks.size();j++)
+		{
+			//we can verify by making connection with the help of HTTPConnection class
+			HttpURLConnection connection=(HttpURLConnection) new URL(activelinks.get(j).getAttribute("href")).openConnection();
+			//connecting
+			connection.connect();
+			//checking the response 
+			String response=connection.getResponseMessage();
+			long responsecode=connection.getResponseCode();
+			//disconnect
+			connection.disconnect();
+			
+			System.out.println("Response is "+activelinks.get(j).getAttribute("href")+response);
+			
+			if(responsecode>=400)
+			{
+				System.out.println("Broken links are "+ activelinks);
+			}
+			else
+			{
+				System.out.println("Valid links "+activelinks);
+			}
+			
+		}
+		}
+		catch(MalformedURLException e)
+		{
+			e.printStackTrace();
+		}
+		
 		
 		driver.findElement(By.xpath("//i[@class='settings icon']/../../div/i")).click();
 		WebElement logout=driver.findElement(By.xpath("//span[contains(text(),'Log Out')]"));

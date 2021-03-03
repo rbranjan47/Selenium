@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Yahoo test paltform">
+  <test  name="Personal  loan">
+  
+  <!--declaring paramters for passing values in the xml file and excuting in the main class -->
+  <parameter name="url" value="https://www.yahoo.com/"></parameter>
+  <parameter name="first_name" value="Rabi Ranjan"></parameter>
+  <parameter name="last_name" value="Kumar"></parameter>
+  <parameter name="email" value="rbranjan47"></parameter>
+  <parameter name="password" value="Rabi8936@#"></parameter>
+  <parameter name="month" value="October"></parameter>
+    <classes>
+    <!--declaring class, along with package name -->
+      <class name="TestNG_Parameters.Parameters"></class>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
+
+

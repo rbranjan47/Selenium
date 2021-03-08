@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="PageObjectModel_BY.RegistrationPageTest">
+      <class name="Selenium_Alpha.Alpha_Demo">
         <methods>
-          <include name="verifyFlightTest"/>
+          <include name="Screenshot_test"/>
         </methods>
-      </class> <!-- PageObjectModel_BY.RegistrationPageTest -->
+      </class> <!-- Selenium_Alpha.Alpha_Demo -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

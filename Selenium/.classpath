@@ -26,5 +26,7 @@
 	<classpathentry kind="lib" path="G:/Apache_Log4J/apache-log4j-2.14.0-bin/log4j-api-2.14.0.jar"/>
 	<classpathentry kind="lib" path="G:/Apache_Log4J/apache-log4j-2.14.0-bin/log4j-core-2.14.0.jar"/>
 	<classpathentry kind="lib" path="G:/HTML_Unit/htmlunit-driver-2.47.1-jar-with-dependencies.jar"/>
+	<classpathentry kind="lib" path="G:/Alpha_4/selenium-java-4.0.0-alpha-7.jar"/>
+	<classpathentry kind="lib" path="G:/WebDriver Managr/webdrivermanager-4.3.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

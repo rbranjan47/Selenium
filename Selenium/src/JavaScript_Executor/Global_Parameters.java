@@ -13,23 +13,23 @@ public class Global_Parameters
 {
 	public static void main(String[] args) throws IOException, InterruptedException
 	{
-		Properties prop=new Properties();
+		Properties proptr=new Properties();
 		FileInputStream fis=new FileInputStream("C:\\Users\\Lenovo\\eclipse-workspace\\Selenium\\src\\JavaScript_Executor\\Properties_transfer.properties");
 		
 		//to read the files as Input Stream i.e. Files into a Stream Combinations
-		prop.load(fis);
-		prop.getProperty("browser");
+		proptr.load(fis);
+		proptr.getProperty("browser");
 		
-		System.out.println(prop.getProperty("browser"));
+		System.out.println(proptr.getProperty("browser"));
 		
 		//We can also modify the value by passing method "SET"
-		prop.setProperty("browser", "firefox");
-		System.out.println(prop.getProperty("browser"));
+		proptr.setProperty("browser", "firefox");
+		System.out.println(proptr.getProperty("browser"));
 		
 		//to print value in the file
 		FileOutputStream fout=new FileOutputStream("C:\\Users\\Lenovo\\eclipse-workspace\\Selenium\\src\\JavaScript_Executor\\Properties_transfer.properties");
 		
-		prop.store(fout, null);
+		proptr.store(fout, null);
 		
 		System.setProperty("webdriver.chrome.driver", "G:\\chromedriver\\chromedriver.exe");
 		WebDriver driver=new ChromeDriver();
@@ -37,7 +37,7 @@ public class Global_Parameters
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
 		
-		String link=prop.getProperty("url");
+		String link=proptr.getProperty("url");
 		driver.get(link);
 		
 		Thread.sleep(3000);

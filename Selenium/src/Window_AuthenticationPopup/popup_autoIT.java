@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -45,17 +46,25 @@ public class popup_autoIT {
 		//calling AutoIT script
 		Runtime.getRuntime().exec(System.getProperty("user.dir")+"\\Test_Data\\pdf_upload.exe");
 		
-		WebElement convrt_optn = driver.findElement(By.xpath("//div[@class='sc-1m6pvee-7 eJDYuH']"));
-		wait.until(ExpectedConditions.elementToBeClickable(convrt_optn));
-		convrt_optn.click();
-		driver.findElement(By.xpath("//span[normalize-space()='Choose option']")).click();
+		Thread.sleep(4000);
+		WebElement convrt_optn = driver.findElement(By.xpath("//div[@role='radiogroup']/div[1]/div/div[1]"));
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", convrt_optn);
 		
-		WebElement download_btn = driver.findElement(By.xpath("//span[@class='wnolmd-2 etrSPs']"));
-		wait.until(ExpectedConditions.elementToBeClickable(download_btn));
-		download_btn.click();
+		/* wait.until(ExpectedConditions.elementToBeClickable(convrt_optn));
+		convrt_optn.click(); */ 
+		
+		//driver.findElement(By.xpath("//span[normalize-space()='Choose option']")).click();
+		driver.findElement(By.xpath("//div[@class='o36u2w-3 gCYLHi']//button[@type='submit']")).click();//convert button
+		
+		Thread.sleep(4000);
+		WebElement download_btn = driver.findElement(By.xpath("//a[@class='lqkt1b-0 fdItuc l3tlg0-1 dvYnjI']"));
+		/* wait.until(ExpectedConditions.elementToBeClickable(download_btn));
+		download_btn.click(); */
+		executor.executeScript("arguments[0].click();", download_btn);
 		
 		//checking file in download_path
-		File fs = new File(download_path+"\\sample-images.zip");
+		File fs = new File(download_path+"//sample-images.jpg");
 		if(fs.exists()){
 			System.out.println("file found");
 		}

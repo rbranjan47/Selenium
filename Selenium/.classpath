@@ -61,5 +61,6 @@
 	<classpathentry kind="lib" path="E:/Automation_Jar/WebDriver_Manager/webdrivermanager-4.4.0.jar"/>
 	<classpathentry kind="lib" path="E:/Automation_Jar/Log_Manager/logmanager-2.4.1-javadoc.jar"/>
 	<classpathentry kind="lib" path="E:/Automation_Jar/Apache_log4J/log4j-api-2.14.1.jar"/>
+	<classpathentry kind="lib" path="E:/Automation_Jar/hAMCREST_Mathematics/hamcrest-library-2.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

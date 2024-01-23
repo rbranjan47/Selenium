@@ -6,10 +6,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 //import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class HeadLess_Browser_Demo
 {
@@ -20,9 +23,12 @@ public class HeadLess_Browser_Demo
 
 	public static void main(String[] args) throws InterruptedException 
 	{
-		System.setProperty("webdriver.chrome.driver", "G:\\chromedriver.exe");
-		//driver = new ChromeDriver();
-		driver = new HtmlUnitDriver();
+		WebDriverManager.chromedriver().setup();
+		
+		//chromeoptions
+		ChromeOptions chromeOptions = new ChromeOptions();
+		chromeOptions.setHeadless(false);
+		driver = new ChromeDriver(chromeOptions);
 		
 		driver.manage().deleteAllCookies();
 		driver.manage().window().maximize();

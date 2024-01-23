@@ -16,7 +16,7 @@ public class Parameters
 	WebDriver driver;
 	@Test
 	@org.testng.annotations.Parameters({"url", "first_name", "last_name", "email", "password", "month"})
-	public void parameters(String url, String name, String email, String password, String first_name, String last_name, String month)
+	public void parameters(String url, String email, String password, String first_name, String last_name, String month)
 	{
 		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
 		driver=new ChromeDriver();

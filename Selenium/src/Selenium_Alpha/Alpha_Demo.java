@@ -14,26 +14,28 @@ import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class Alpha_Demo 
-{
-	public long timeout=20;
-	public long pageout=20;
+public class Alpha_Demo {
+	public long timeout = 20;
+	public long pageout = 20;
+
 	@Test
-	public void Screenshot_test() throws IOException
-	{
+	public void Screenshot_test() throws IOException {
 		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().implicitlyWait(timeout, TimeUnit.SECONDS);
 		driver.manage().timeouts().pageLoadTimeout(pageout, TimeUnit.SECONDS);
-		
+
 		driver.get("https://opensource-demo.orangehrmlive.com/");
-		WebElement logo=driver.findElement(By.xpath("//*[@id=\"divLogo\"]/img"));
-		
-		File file_logo=logo.getScreenshotAs(OutputType.FILE);
-		File destn_logo=new File("Logo1.png");
-		//using files utils methods
+
+		WebElement logo = driver.findElement(By.xpath("//div[@class='orangehrm-login-logo']//img"));
+
+		File file_logo = logo.getScreenshotAs(OutputType.FILE);
+		File destn_logo = new File("Logo1.png");
+		// using files utils methods
 		FileUtils.copyDirectory(file_logo, destn_logo);
+
+		driver.quit();
 	}
 }
